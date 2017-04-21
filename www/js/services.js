@@ -1,47 +1,33 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
+// Hey Boone, I have set this up with some pre-loaded data
+// Not sure what a dare actually consists of, so you may have to change the schema
 
-  // Some fake testing data
-  var chats = [{
+.factory('Dares', function() {
+  var dares = [{
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
+    task: 'Rob a bank.',
+    difficulty: 2
   }, {
     id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
+    task: 'Participate in a hackathon',
+    difficulty: 3
   }];
 
   return {
     all: function() {
-      return chats;
+      console.log("Getting all dares", dares)
+      return dares;
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+    remove: function(dare) {
+      console.log("Removing dare with id", dare)
+      dares.splice(dares.indexOf(dare), 1);
     },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+    get: function(dareId) {
+      console.log("Looking for dare with id", dareId)
+      for (var i = 0; i < dares.length; i++) {
+        if (dares[i].id === parseInt(dareId)) {
+          return dares[i];
         }
       }
       return null;
