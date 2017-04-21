@@ -23,6 +23,11 @@ angular.module('starter.services', [])
       console.log("Removing hard-coded dare with id", dare)
       dares.splice(dares.indexOf(dare), 1);
     },
+    add: function(task, difficulty) {
+      dare = {id: dares.length-1, task: task, difficulty: difficulty}
+      console.log("Adding a hard-coded dare", dare)
+      dares.push(dare);
+    },
     get: function(dareId) {
       console.log("Looking for hard-coded dare with id", dareId)
       for (var i = 0; i < dares.length; i++) {
@@ -35,10 +40,51 @@ angular.module('starter.services', [])
   };
 }
 
+.factory('Users', function() {
+  var users = [{
+    id:0,
+    username: 'boone',
+    password: 'password'
+  },{
+    id:1,
+    username: 'guStove',
+    password: 'password'
+  },{
+    id:2,
+    username: "ux-student-whose-name-i-dont-know",
+    password: 'password'
+  }];
+
+  return {
+    all: function() {
+      console.log("Getting all hard-coded users", users)
+      return users;
+    },
+    add: function(username, password) {
+      user = {id: users.length-1, username: username, password: password}
+      console.log("Adding a hard-coded user", user)
+      users.push(user);
+    },
+    remove: function(user) {
+      console.log("Removing hard-coded user with id", user)
+      users.splice(users.indexOf(user), 1);
+    },
+    get: function(userId) {
+      console.log("Looking for hard-coded user with id", userId)
+      for (var i = 0; i < users.length; i++) {
+        if (users[i].id === parseInt(userId)) {
+          return users[i];
+        }
+      }
+      return null;
+    }
+  };
+}
+
 .factory('CompletedDares', function() {
   var completedDares = [{
     id:0,
-    
+
     dare_id: 0,
     user_id: 0,
     picture_url: '../img/adam.jpg',
@@ -50,7 +96,7 @@ angular.module('starter.services', [])
     user_id: 1,
     picture_url: '../img/ben.jpg',
     completed_at: new Date()
-  }{
+  },{
     id:2,
 
     dare_id: 0,
@@ -64,14 +110,25 @@ angular.module('starter.services', [])
       console.log("Getting all hard-coded completedDares", completedDares)
       return completedDares;
     },
+    add: function(dare_id, user_id, picture_url) {
+      completedDare = {
+        id: completedDares.length-1,
+        dare_id: dare_id,
+        user_id: user_id,
+        picture_url: picture_url,
+        completed_at: new Date()
+      }
+      console.log("Adding a hard-coded completedDare", completedDare)
+      completedDares.push(completedDare);
+    },
     remove: function(dare) {
-      console.log("Removing hard-coded dare with id", dare)
+      console.log("Removing hard-coded completedDare with id", dare)
       completedDares.splice(completedDares.indexOf(dare), 1);
     },
     get: function(dareId) {
-      console.log("Looking for hard-coded dare with id", dareId)
+      console.log("Looking for hard-coded completedDare with id", completedDareId)
       for (var i = 0; i < completedDares.length; i++) {
-        if (completedDares[i].id === parseInt(dareId)) {
+        if (completedDares[i].id === parseInt(completedDareId)) {
           return completedDares[i];
         }
       }
