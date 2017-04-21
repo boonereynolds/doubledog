@@ -139,7 +139,5 @@ angular.module('starter.services', [])
 
 );
 
-// This code is for firebase integration. It occurred to me that this might be confusing,
-// so you can leave it out and just demo the hard-coded stuff. Keep in mind, the brackets
-// are not matched up. If you want to switch to this code, you need to delete everything 
-// from this comment to line 6.
+
+

@@ -608,6 +608,8 @@ var config = {
 
 firebase.initializeApp(config);
 
+console.log('firebase linked')
+
 module.exports = {
   firebase: firebase,
   firebaseRef: firebase.database().ref(),
