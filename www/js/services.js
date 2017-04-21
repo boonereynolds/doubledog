@@ -168,23 +168,26 @@ var {firebaseRef} = require('./firebase')
       })
     },
 
+    get: function(dareId) {
+      console.log("Looking for dare with id", dareId)
+      var daresRef = firebaseRef.child(`dares/${dareId}`)
+
+      daresRef.once('value').then((data) => {
+        var dare = data.val() || {}
+
+        return dare
+        })
+      })
+    },
+
     remove: function(dareId) {
       console.log("Removing dare with id", dareId)
       dares.splice(dares.indexOf(dare), 1);
     },
     add: function(task, difficulty) {
       dare = {id: dares.length-1, task: task, difficulty: difficulty}
-      console.log("Adding a hard-coded dare", dare)
+      console.log("Adding dare", dare)
       dares.push(dare);
-    },
-    get: function(dareId) {
-      console.log("Looking for hard-coded dare with id", dareId)
-      for (var i = 0; i < dares.length; i++) {
-        if (dares[i].id === parseInt(dareId)) {
-          return dares[i];
-        }
-      }
-      return null;
     }
   };
 }
